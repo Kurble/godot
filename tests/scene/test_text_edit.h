@@ -3827,7 +3827,7 @@ TEST_CASE("[SceneTree][TextEdit] viewport") {
 	MessageQueue::get_singleton()->flush();
 
 	CHECK(text_edit->get_first_visible_line() == (visible_lines / 2) + 4);
-	CHECK(text_edit->get_v_scroll() == (visible_lines + (visible_lines / 2)) - 1);
+	CHECK(Math::abs(text_edit->get_v_scroll() - ((visible_lines + (visible_lines / 2)) - 1)) < CMP_EPSILON);
 	CHECK(text_edit->get_last_full_visible_line() == (visible_lines) + 3);
 	CHECK(text_edit->get_last_full_visible_line_wrap_index() == 1);
 	CHECK(text_edit->get_caret_wrap_index() == 1);
